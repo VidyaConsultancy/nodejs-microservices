@@ -17,7 +17,7 @@ class FeedbackService {
 
   async addEntry(name, title, message) {
     const q = 'feedback';
-    const conn = await amqplib.connect('amqp://localhost');
+    const conn = await amqplib.connect('amqp://docker.local');
     const ch = await conn.createChannel();
     await ch.assertQueue(q);
     const qm = JSON.stringify({ name, title, message });

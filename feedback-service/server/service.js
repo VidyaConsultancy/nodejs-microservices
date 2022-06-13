@@ -12,7 +12,7 @@ module.exports = (config) => {
 
   const q = 'feedback';
 
-  amqplib.connect('amqp://localhost').then(conn => conn.createChannel())
+  amqplib.connect('amqp://docker.local').then(conn => conn.createChannel())
     .then(ch => ch.assertQueue(q).then(() => ch.consume(q, (msg) => {
       if (msg !== null) {
         log.debug(`Got message ${msg.content.toString()}`);
